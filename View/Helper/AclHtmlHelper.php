@@ -1,5 +1,5 @@
 <?php
-
+App::uses('AclRouter', 'Acl.Lib');
 App::uses('HtmlHelper', 'View/Helper');
 
 class AclHtmlHelper extends HtmlHelper {
