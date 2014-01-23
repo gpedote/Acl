@@ -29,7 +29,7 @@ class AclAppController extends AppController {
 			$this->set('user_pk_name', $this->_get_user_primary_key_name());
 			$this->set('role_fk_name', $this->_get_role_foreign_key_name());
 
-			$this->_authorize_admins();
+			$this->_authorize();
 
 //	    	if($this->name != 'Acl'
 //	    		&&
@@ -59,7 +59,7 @@ class AclAppController extends AppController {
 				}
 
 				if (!$is_requester) {
-					$this->render('/Aros/admin_not_acl_requester');
+					$this->render('/Aros/not_acl_requester');
 				}
 			}
 		} else {
@@ -68,9 +68,9 @@ class AclAppController extends AppController {
 	}
 
 	function _check_files_updates() {
-		if ($this->request->params['controller'] != 'acos' || ($this->request->params['action'] != 'admin_synchronize' &&
-				$this->request->params['action'] != 'admin_prune_acos' &&
-				$this->request->params['action'] != 'admin_build_acl')) {
+		if ($this->request->params['controller'] != 'acos' || ($this->request->params['action'] != 'synchronize' &&
+				$this->request->params['action'] != 'prune_acos' &&
+				$this->request->params['action'] != 'build_acl')) {
 			if ($this->AclManager->controller_hash_file_is_out_of_sync()) {
 				$missing_aco_nodes = $this->AclManager->get_missing_acos();
 				$nodes_to_prune = $this->AclManager->get_acos_to_prune();
@@ -89,7 +89,7 @@ class AclAppController extends AppController {
 				$this->set('missing_aco_nodes', $missing_aco_nodes);
 
 				if ($has_updates) {
-					$this->render('/Acos/admin_has_updates');
+					$this->render('/Acos/has_updates');
 					$this->response->send();
 					$this->AclManager->update_controllers_hash_file();
 					die();
@@ -100,7 +100,7 @@ class AclAppController extends AppController {
 		}
 	}
 
-	private function _authorize_admins() {
+	private function _authorize() {
 		$authorized_role_ids = Configure :: read('acl.role.access_plugin_role_ids');
 		$authorized_user_ids = Configure :: read('acl.role.access_plugin_user_ids');
 
@@ -166,7 +166,7 @@ class AclAppController extends AppController {
 	}
 
 	function _return_to_referer() {
-		$this->redirect($this->referer(array('action' => 'admin_index')));
+		$this->redirect($this->referer(array('action' => 'index')));
 	}
 
 }

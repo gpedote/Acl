@@ -12,13 +12,8 @@ class AclController extends AclAppController {
 	var $uses = null;
 
 	function index() {
-		$this->redirect('/admin/acl/aros');
+		$this->redirect('/acl/aros');
 	}
-
-	function admin_index() {
-		$this->redirect('/admin/acl/acos');
-	}
-
 }
 
 ?>

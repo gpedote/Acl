@@ -7,7 +7,7 @@ echo $this->element('Aros/links');
 ?>
 
 <?php
-echo $this->Form->create('User', array('url' => array('plugin' => 'acl', 'controller' => 'aros', 'action' => 'admin_users'), 'role' => 'form', 'class' => 'form-inline'));
+echo $this->Form->create('User', array('url' => array('plugin' => 'acl', 'controller' => 'aros', 'action' => 'users'), 'role' => 'form', 'class' => 'form-inline'));
 echo '<div class="form-group">';
 echo $this->Form->input($user_display_field, array('label' => false, 'div' => false, 'class' => 'form-control', 'placeholder' => __d('acl', 'User name')));
 echo '</div>&nbsp;';
@@ -50,7 +50,7 @@ if ($missing_aro) {
 				echo '  <td><i class="fa fa-check"></i></td>';
 			} else {
 				$title = __d('acl', 'Update the user role');
-				echo '  <td>' . $this->Html->link('<i class="fa fa-times"></i>', '/admin/acl/aros/update_user_role/user:' . $user[$user_model_name][$user_pk_name] . '/role:' . $role[$role_model_name][$role_pk_name], array('title' => $title, 'alt' => $title, 'escape' => false)) . '</td>';
+				echo '  <td>' . $this->Html->link('<i class="fa fa-times"></i>', '/acl/aros/update_user_role/user:' . $user[$user_model_name][$user_pk_name] . '/role:' . $role[$role_model_name][$role_pk_name], array('title' => $title, 'alt' => $title, 'escape' => false)) . '</td>';
 			}
 		}
 

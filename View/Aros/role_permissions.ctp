@@ -12,7 +12,7 @@ echo $this->element('Aros/links');
 <div>
 
 	<?php
-	echo $this->Html->link('<i class="fa fa-trash-o"></i> ' . __d('acl', 'Clear permissions table'), '/admin/acl/aros/empty_permissions', array('confirm' => __d('acl', 'Are you sure you want to delete all roles and users permissions ?'), 'escape' => false, 'class' => 'btn btn-danger'));
+	echo $this->Html->link('<i class="fa fa-trash-o"></i> ' . __d('acl', 'Clear permissions table'), '/acl/aros/empty_permissions', array('confirm' => __d('acl', 'Are you sure you want to delete all roles and users permissions ?'), 'escape' => false, 'class' => 'btn btn-danger'));
 	?>
 
 
@@ -35,8 +35,8 @@ echo $this->element('Aros/links');
 //    $color = ($i % 2 == 0) ? 'color1' : 'color2';
 		echo '<tr>';
 		echo '  <td>' . $role[$role_model_name][$role_display_field] . '</td>';
-		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-check"></i>', '/admin/acl/aros/grant_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
-		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-times"></i>', '/admin/acl/aros/deny_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
+		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-check"></i>', '/acl/aros/grant_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
+		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-times"></i>', '/acl/aros/deny_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
 		echo '<tr>';
 
 //    $i++;
@@ -155,14 +155,14 @@ echo $this->element('Aros/links');
 
 						if (isset($ctrl_info['permissions'][$role[$role_model_name][$role_pk_name]])) {
 							if ($method['permissions'][$role[$role_model_name][$role_pk_name]] == 1) {
-								//echo '<td>' . $this->Html->link($this->Html->image('/acl/img/design/tick.png'), '/admin/acl/aros/deny_role_permission/' . $role[$role_model_name][$role_pk_name] . '/plugin:' . $plugin_name . '/controller:' . $plugin_ctrler_name . '/action:' . $method['name'], array('escape' => false)) . '</td>';
+								//echo '<td>' . $this->Html->link($this->Html->image('/acl/img/design/tick.png'), '/acl/aros/deny_role_permission/' . $role[$role_model_name][$role_pk_name] . '/plugin:' . $plugin_name . '/controller:' . $plugin_ctrler_name . '/action:' . $method['name'], array('escape' => false)) . '</td>';
 
 								$this->Js->buffer('register_role_toggle_right(true, "' . $this->Html->url('/') . '", "right_' . $plugin_name . '_' . $role[$role_model_name][$role_pk_name] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '", "' . $role[$role_model_name][$role_pk_name] . '", "' . $plugin_name . '", "' . $plugin_ctrler_name . '", "' . $method['name'] . '")');
 
 //								echo $this->Html->image('/acl/img/design/tick.png', array('class' => 'pointer'));
 								echo '<i class="fa fa-check pointer"></i>';
 							} else {
-								//echo '<td>' . $this->Html->link($this->Html->image('/acl/img/design/cross.png'), '/admin/acl/aros/grant_role_permission/' . $role[$role_model_name][$role_pk_name] . '/plugin:' . $plugin_name .'/controller:' . $plugin_ctrler_name . '/action:' . $method['name'], array('escape' => false)) . '</td>';
+								//echo '<td>' . $this->Html->link($this->Html->image('/acl/img/design/cross.png'), '/acl/aros/grant_role_permission/' . $role[$role_model_name][$role_pk_name] . '/plugin:' . $plugin_name .'/controller:' . $plugin_ctrler_name . '/action:' . $method['name'], array('escape' => false)) . '</td>';
 
 								$this->Js->buffer('register_role_toggle_right(false, "' . $this->Html->url('/') . '", "right_' . $plugin_name . '_' . $role[$role_model_name][$role_pk_name] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '", "' . $role[$role_model_name][$role_pk_name] . '", "' . $plugin_name . '", "' . $plugin_ctrler_name . '", "' . $method['name'] . '")');
 

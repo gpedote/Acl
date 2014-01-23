@@ -6,7 +6,7 @@ echo '<p class="alert alert-warning"><i class="fa fa-warning-sign"></i> ' . __d(
 
 echo '<p>';
 echo __d('acl', 'You can update the ACOs by clicking on the following link') . ': ';
-echo $this->Html->link('<i class="fa fa-refresh"></i> ' . __d('acl', 'Synchronize ACOs'), '/admin/acl/acos/synchronize/run', array('class' => 'btn btn-primary', 'escape' => false));
+echo $this->Html->link('<i class="fa fa-refresh"></i> ' . __d('acl', 'Synchronize ACOs'), '/acl/acos/synchronize/run', array('class' => 'btn btn-primary', 'escape' => false));
 echo '</p>';
 
 echo '<p>';

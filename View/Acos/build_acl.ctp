@@ -38,7 +38,7 @@ if ($run) {
 		echo '</div>';
 		echo '<div class="col-lg-6">';
 		echo '<p>';
-		echo $this->Html->link('<i class="fa fa-plus-sign"></i> ' . __d('acl', 'Build'), '/admin/acl/acos/build_acl/run', array('escape' => false, 'class' => 'btn btn-primary', 'escape' => false));
+		echo $this->Html->link('<i class="fa fa-plus-sign"></i> ' . __d('acl', 'Build'), '/acl/acos/build_acl/run', array('escape' => false, 'class' => 'btn btn-primary', 'escape' => false));
 		echo ' ' . __d('acl', '(Clicking the link will not destroy existing actions ACOs.)');
 		echo '</p>';
 		echo '</div>';
