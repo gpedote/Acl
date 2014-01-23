@@ -26,7 +26,7 @@ Configure :: write('acl.aro.role.primary_key', '');
  *
  * (can be left empty if your foreign key's name follows CakePHP conventions)(e.g. 'role_id')
  */
-Configure :: write('acl.aro.role.foreign_key', '');
+Configure :: write('acl.aro.role.foreign_key', 'group_id');
 
 /*
  * The model name used for the user (typically 'User')
