@@ -37,7 +37,7 @@ if (isset($users)) {
 			$title = __d('acl', 'Manage user specific rights');
 
 			$link = '/acl/aros/user_permissions/' . $user[$user_model_name][$user_pk_name];
-			if (Configure :: read('acl.gui.users_permissions.ajax') === true) {
+			if (Configure::read('Acl.gui.users_permissions.ajax') === true) {
 				$link .= '/ajax:true';
 			}
 

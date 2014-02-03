@@ -20,11 +20,11 @@ class AclAppController extends AppController {
 	}
 
 	private function _check_config() {
-		$role_model_name = Configure :: read('acl.aro.role.model');
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
 		if (!empty($role_model_name)) {
 			$this->set('role_model_name', $role_model_name);
-			$this->set('user_model_name', Configure :: read('acl.aro.user.model'));
+			$this->set('user_model_name', Configure::read('Acl.aro.user.model'));
 			$this->set('role_pk_name', $this->_get_role_primary_key_name());
 			$this->set('user_pk_name', $this->_get_user_primary_key_name());
 			$this->set('role_fk_name', $this->_get_role_foreign_key_name());
@@ -45,15 +45,15 @@ class AclAppController extends AppController {
 //	    		}
 //	    	}
 
-			if (Configure :: read('acl.check_act_as_requester')) {
+			if (Configure::read('Acl.check_act_as_requester')) {
 				$is_requester = true;
 
-				if (!$this->AclManager->check_user_model_acts_as_acl_requester(Configure :: read('acl.aro.user.model'))) {
+				if (!$this->AclManager->check_user_model_acts_as_acl_requester(Configure::read('Acl.aro.user.model'))) {
 					$this->set('model_is_not_requester', false);
 					$is_requester = false;
 				}
 
-				if (!$this->AclManager->check_user_model_acts_as_acl_requester(Configure :: read('acl.aro.role.model'))) {
+				if (!$this->AclManager->check_user_model_acts_as_acl_requester(Configure::read('Acl.aro.role.model'))) {
 					$this->set('role_is_not_requester', false);
 					$is_requester = false;
 				}
@@ -101,8 +101,8 @@ class AclAppController extends AppController {
 	}
 
 	private function _authorize() {
-		$authorized_role_ids = Configure :: read('acl.role.access_plugin_role_ids');
-		$authorized_user_ids = Configure :: read('acl.role.access_plugin_user_ids');
+		$authorized_role_ids = Configure::read('Acl.role.access_plugin_role_ids');
+		$authorized_user_ids = Configure::read('Acl.role.access_plugin_user_ids');
 
 		$model_role_fk = $this->_get_role_foreign_key_name();
 
@@ -130,7 +130,7 @@ class AclAppController extends AppController {
 	}
 
 	function _get_role_primary_key_name() {
-		$forced_pk_name = Configure :: read('acl.aro.role.primary_key');
+		$forced_pk_name = Configure::read('Acl.aro.role.primary_key');
 		if (!empty($forced_pk_name)) {
 			return $forced_pk_name;
 		} else {
@@ -142,7 +142,7 @@ class AclAppController extends AppController {
 	}
 
 	function _get_user_primary_key_name() {
-		$forced_pk_name = Configure :: read('acl.aro.user.primary_key');
+		$forced_pk_name = Configure::read('Acl.aro.user.primary_key');
 		if (!empty($forced_pk_name)) {
 			return $forced_pk_name;
 		} else {
@@ -154,14 +154,14 @@ class AclAppController extends AppController {
 	}
 
 	function _get_role_foreign_key_name() {
-		$forced_fk_name = Configure :: read('acl.aro.role.foreign_key');
+		$forced_fk_name = Configure::read('Acl.aro.role.foreign_key');
 		if (!empty($forced_fk_name)) {
 			return $forced_fk_name;
 		} else {
 			/*
 			 * Return the foreign key's name that follows the CakePHP conventions
 			 */
-			return Inflector :: underscore(Configure :: read('acl.aro.role.model')) . '_id';
+			return Inflector :: underscore(Configure::read('Acl.aro.role.model')) . '_id';
 		}
 	}
 
