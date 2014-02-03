@@ -512,7 +512,7 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_role_granted');
+			$this->render('role_granted');
 		} else {
 			$this->_return_to_referer();
 		}
@@ -538,7 +538,7 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_role_denied');
+			$this->render('role_denied');
 		} else {
 			$this->_return_to_referer();
 		}
@@ -614,7 +614,7 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_user_granted');
+			$this->render('user_granted');
 		} else {
 			$this->_return_to_referer();
 		}
@@ -650,7 +650,7 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_user_denied');
+			$this->render('user_denied');
 		} else {
 			$this->_return_to_referer();
 		}
