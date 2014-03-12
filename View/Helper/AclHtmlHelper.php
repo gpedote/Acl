@@ -21,4 +21,19 @@ class AclHtmlHelper extends HtmlHelper {
 		}
 	}
 
+	public function checkPermissions($urls = null) {
+		$permissions = $this->Session->read('Alaxos.Acl.permissions');
+		if (!isset($permissions)) {
+			return false;
+		}
+
+		foreach ($urls as $url) {
+			$aco_path = AclRouter::aco_path($url);
+			if (isset($permissions[$aco_path]) && $permissions[$aco_path] == 1) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
