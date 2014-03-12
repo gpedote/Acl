@@ -81,7 +81,7 @@ if ($run) {
 	echo '<h3>' . __d('acl', 'Synchronize') . '</h3>';
 	if ($has_aco_to_sync) {
 		echo '<p>';
-		echo $this->Html->link('<i class="fa fa-refresh"></i> ' . __d('acl', 'Synchronize'), '/admin/acl/acos/synchronize/run', array('class'=>'btn btn-primary','escape' => false));
+		echo $this->Html->link('<i class="fa fa-refresh"></i> ' . __d('acl', 'Synchronize'), '/acl/acos/synchronize/run', array('class'=>'btn btn-primary','escape' => false));
 		echo ' ' . __d('acl', 'Clicking the link will not change or remove permissions for existing actions ACOs.');
 		echo '</p>';
 	} else {

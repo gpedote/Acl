@@ -15,11 +15,11 @@ class AcosController extends AclAppController {
 	//var $components = array('Acl', 'Acl.AclManager');
 
 
-	function admin_index() {
+	function index() {
 		$this->set('title_for_layout', __d('acl', 'ACOs'));
 	}
 
-	function admin_empty_acos($run = null) {
+	function empty_acos($run = null) {
 		/*
 		 * Delete ACO with 'alias' controllers
 		 * -> all ACOs belonging to the actions tree will be deleted, but eventual ACO that are not actions will be kept
@@ -48,7 +48,7 @@ class AcosController extends AclAppController {
 		$this->set('title_for_layout', __d('acl', 'Clear actions ACOs'));
 	}
 
-	function admin_build_acl($run = null) {
+	function build_acl($run = null) {
 		if (isset($run)) {
 			$logs = $this->AclManager->create_acos();
 
@@ -64,7 +64,7 @@ class AcosController extends AclAppController {
 		$this->set('title_for_layout', __d('acl', 'Build actions ACOs'));
 	}
 
-	function admin_prune_acos($run = null) {
+	function prune_acos($run = null) {
 		if (isset($run)) {
 			$logs = $this->AclManager->prune_acos();
 
@@ -80,7 +80,7 @@ class AcosController extends AclAppController {
 		$this->set('title_for_layout', __d('acl', 'Prune actions ACOs'));
 	}
 
-	function admin_synchronize($run = null) {
+	function synchronize($run = null) {
 		if (isset($run)) {
 			$prune_logs = $this->AclManager->prune_acos();
 			$create_logs = $this->AclManager->create_acos();

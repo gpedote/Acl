@@ -386,9 +386,9 @@ class AclManagerComponent extends Component {
 			$aco_path = 'controllers/' . $aco_path;
 
 			$pk_name = 'id';
-			if ($aro_nodes[0]['Aro']['model'] == Configure :: read('acl.aro.role.model')) {
+			if ($aro_nodes[0]['Aro']['model'] == Configure::read('Acl.aro.role.model')) {
 				$pk_name = $this->controller->_get_role_primary_key_name();
-			} elseif ($aro_nodes[0]['Aro']['model'] == Configure :: read('acl.aro.user.model')) {
+			} elseif ($aro_nodes[0]['Aro']['model'] == Configure::read('Acl.aro.user.model')) {
 				$pk_name = $this->controller->_get_user_primary_key_name();
 			}
 
@@ -485,9 +485,9 @@ class AclManagerComponent extends Component {
 
 	private function get_specific_permission_right($aro_node, $aco_path) {
 		$pk_name = 'id';
-		if ($aro_node['Aro']['model'] == Configure :: read('acl.aro.role.model')) {
+		if ($aro_node['Aro']['model'] == Configure::read('Acl.aro.role.model')) {
 			$pk_name = $this->controller->_get_role_primary_key_name();
-		} elseif ($aro_node['Aro']['model'] == Configure :: read('acl.aro.user.model')) {
+		} elseif ($aro_node['Aro']['model'] == Configure::read('Acl.aro.user.model')) {
 			$pk_name = $this->controller->_get_user_primary_key_name();
 		}
 
@@ -529,9 +529,9 @@ class AclManagerComponent extends Component {
 
 	private function get_first_parent_permission_right($aro_node, $aco_path) {
 		$pk_name = 'id';
-		if ($aro_node['Aro']['model'] == Configure :: read('acl.aro.role.model')) {
+		if ($aro_node['Aro']['model'] == Configure::read('Acl.aro.role.model')) {
 			$pk_name = $this->controller->_get_role_primary_key_name();
-		} elseif ($aro_node['Aro']['model'] == Configure :: read('acl.aro.user.model')) {
+		} elseif ($aro_node['Aro']['model'] == Configure::read('Acl.aro.user.model')) {
 			$pk_name = $this->controller->_get_user_primary_key_name();
 		}
 
@@ -576,7 +576,7 @@ class AclManagerComponent extends Component {
 			$user = $this->Auth->user();
 
 			if (!empty($user)) {
-				$user = array(Configure :: read('acl.aro.user.model') => $user);
+				$user = array(Configure::read('Acl.aro.user.model') => $user);
 				$permissions = array();
 
 				foreach ($actions as $action) {

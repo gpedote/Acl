@@ -39,7 +39,7 @@ if ($user_has_specific_permissions) {
 				<i class="fa fa-circle fa fa-stack-base"></i>
 				<i class="fa fa-lightbulb fa fa-light"></i>
 			</span> ' . __d('acl', 'This user has specific permissions.');
-	echo ' ' . $this->Html->link('<i class="fa fa-times"></i> ' . __d('acl', 'Reset to role permissions'), '/admin/acl/aros/clear_user_specific_permissions/' . $user[$user_model_name][$user_pk_name], array('confirm' => __d('acl', 'Are you sure you want to clear the permissions specific to this user ?'), 'escape' => false, 'class' => 'btn btn-xs btn-primary'));
+	echo ' ' . $this->Html->link('<i class="fa fa-times"></i> ' . __d('acl', 'Reset to role permissions'), '/acl/aros/clear_user_specific_permissions/' . $user[$user_model_name][$user_pk_name], array('confirm' => __d('acl', 'Are you sure you want to clear the permissions specific to this user ?'), 'escape' => false, 'class' => 'btn btn-xs btn-primary'));
 	echo '</div>';
 }
 ?>

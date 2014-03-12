@@ -35,7 +35,7 @@ if ($run) {
 		echo '</p>';
 		echo '</div>';
 		echo '<div class="col-lg-6">';
-		echo $this->Html->link('<i class="fa fa-cut"></i> ' . __d('acl', 'Prune'), '/admin/acl/acos/prune_acos/run', array('escape' => false, 'class' => 'btn btn-primary'));
+		echo $this->Html->link('<i class="fa fa-cut"></i> ' . __d('acl', 'Prune'), '/acl/acos/prune_acos/run', array('escape' => false, 'class' => 'btn btn-primary'));
 		echo ' ' . __d('acl', 'Clicking the link will not change or remove permissions for actions ACOs that are not obsolete.');
 		echo '</div>';
 		echo '</div>';

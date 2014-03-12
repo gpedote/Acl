@@ -19,22 +19,22 @@ class ArosController extends AclAppController {
 	);
 
 	function beforeFilter() {
-		$this->loadModel(Configure :: read('acl.aro.role.model'));
-		$this->loadModel(Configure :: read('acl.aro.user.model'));
+		$this->loadModel(Configure::read('Acl.aro.role.model'));
+		$this->loadModel(Configure::read('Acl.aro.user.model'));
 
 		parent :: beforeFilter();
 	}
 
-	function admin_index() {
+	function index() {
 		
 	}
 
-	function admin_check($run = null) {
-		$user_model_name = Configure :: read('acl.aro.user.model');
-		$role_model_name = Configure :: read('acl.aro.role.model');
+	function check($run = null) {
+		$user_model_name = Configure::read('Acl.aro.user.model');
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
-		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure :: read('acl.user.display_name'));
-		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure :: read('acl.aro.role.display_field'));
+		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure::read('Acl.user.display_name'));
+		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure::read('Acl.aro.role.display_field'));
 
 		$this->set('user_display_field', $user_display_field);
 		$this->set('role_display_field', $role_display_field);
@@ -115,12 +115,12 @@ class ArosController extends AclAppController {
 		$this->set('missing_aros', $missing_aros);
 	}
 
-	function admin_users() {
-		$user_model_name = Configure :: read('acl.aro.user.model');
-		$role_model_name = Configure :: read('acl.aro.role.model');
+	function users() {
+		$user_model_name = Configure::read('Acl.aro.user.model');
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
-		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure :: read('acl.user.display_name'));
-		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure :: read('acl.aro.role.display_field'));
+		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure::read('Acl.user.display_name'));
+		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure::read('Acl.aro.role.display_field'));
 
 		$this->paginate['order'] = array($user_display_field => 'asc');
 
@@ -163,8 +163,8 @@ class ArosController extends AclAppController {
 		$this->set('missing_aro', $missing_aro);
 	}
 
-	function admin_update_user_role() {
-		$user_model_name = Configure :: read('acl.aro.user.model');
+	function update_user_role() {
+		$user_model_name = Configure::read('Acl.aro.user.model');
 
 		$data = array($user_model_name => array($this->_get_user_primary_key_name() => $this->params['named']['user'], $this->_get_role_foreign_key_name() => $this->params['named']['role']));
 
@@ -178,10 +178,10 @@ class ArosController extends AclAppController {
 		$this->_return_to_referer();
 	}
 
-	function admin_ajax_role_permissions() {
-		$role_model_name = Configure :: read('acl.aro.role.model');
+	function ajax_role_permissions() {
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
-		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure :: read('acl.aro.role.display_field'));
+		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure::read('Acl.aro.role.display_field'));
 
 		$this->set('role_display_field', $role_display_field);
 
@@ -219,10 +219,10 @@ class ArosController extends AclAppController {
 		$this->set('actions', $methods);
 	}
 
-	function admin_role_permissions() {
-		$role_model_name = Configure :: read('acl.aro.role.model');
+	function role_permissions() {
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
-		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure :: read('acl.aro.role.display_field'));
+		$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure::read('Acl.aro.role.display_field'));
 
 		$this->set('role_display_field', $role_display_field);
 
@@ -255,13 +255,13 @@ class ArosController extends AclAppController {
 						if (!empty($aco_node)) {
 							$authorized = $this->Acl->check($role, 'controllers/' . $full_action);
 
-							$permissions[$role[Configure :: read('acl.aro.role.model')][$this->_get_role_primary_key_name()]] = $authorized ? 1 : 0;
+							$permissions[$role[Configure::read('Acl.aro.role.model')][$this->_get_role_primary_key_name()]] = $authorized ? 1 : 0;
 						}
 					} else {
 						/*
 						 * No check could be done as the ARO is missing
 						 */
-						$permissions[$role[Configure :: read('acl.aro.role.model')][$this->_get_role_primary_key_name()]] = -1;
+						$permissions[$role[Configure::read('Acl.aro.role.model')][$this->_get_role_primary_key_name()]] = -1;
 					}
 				}
 
@@ -277,11 +277,11 @@ class ArosController extends AclAppController {
 		$this->set('actions', $methods);
 	}
 
-	function admin_user_permissions($user_id = null) {
-		$user_model_name = Configure :: read('acl.aro.user.model');
-		$role_model_name = Configure :: read('acl.aro.role.model');
+	function user_permissions($user_id = null) {
+		$user_model_name = Configure::read('Acl.aro.user.model');
+		$role_model_name = Configure::read('Acl.aro.role.model');
 
-		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure :: read('acl.user.display_name'));
+		$user_display_field = $this->AclManager->set_display_name($user_model_name, Configure::read('Acl.user.display_name'));
 
 		$this->paginate['order'] = array($user_display_field => 'asc');
 		$this->set('user_display_field', $user_display_field);
@@ -303,7 +303,7 @@ class ArosController extends AclAppController {
 
 			$this->set('users', $users);
 		} else {
-			$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure :: read('acl.aro.role.display_field'));
+			$role_display_field = $this->AclManager->set_display_name($role_model_name, Configure::read('Acl.aro.role.display_field'));
 
 			$this->set('role_display_field', $role_display_field);
 
@@ -373,12 +373,12 @@ class ArosController extends AclAppController {
 			$this->set('actions', $methods);
 
 			if (isset($this->params['named']['ajax'])) {
-				$this->render('admin_ajax_user_permissions');
+				$this->render('ajax_user_permissions');
 			}
 		}
 	}
 
-	function admin_empty_permissions() {
+	function empty_permissions() {
 		if ($this->Aro->Permission->deleteAll(array('Permission.id > ' => 0))) {
 			$this->Session->setFlash(__d('acl', 'The permissions have been cleared'), 'flash_message', null, 'plugin_acl');
 		} else {
@@ -388,8 +388,8 @@ class ArosController extends AclAppController {
 		$this->_return_to_referer();
 	}
 
-	function admin_clear_user_specific_permissions($user_id) {
-		$user = & $this->{Configure :: read('acl.aro.user.model')};
+	function clear_user_specific_permissions($user_id) {
+		$user = & $this->{Configure::read('Acl.aro.user.model')};
 		$user->id = $user_id;
 
 		/*
@@ -398,7 +398,7 @@ class ArosController extends AclAppController {
 		$node = $this->Acl->Aro->node($user);
 		if (empty($node)) {
 			$asked_user = $user->read(null, $user_id);
-			$this->Session->setFlash(sprintf(__d('acl', "The user '%s' does not exist in the ARO table"), $asked_user['User'][Configure :: read('acl.user.display_name')]), 'flash_error', null, 'plugin_acl');
+			$this->Session->setFlash(sprintf(__d('acl', "The user '%s' does not exist in the ARO table"), $asked_user['User'][Configure::read('Acl.user.display_name')]), 'flash_error', null, 'plugin_acl');
 		} else {
 			if ($this->Aro->Permission->deleteAll(array('Aro.id' => $node[0]['Aro']['id']))) {
 				$this->Session->setFlash(__d('acl', 'The specific permissions have been cleared'), 'flash_message', null, 'plugin_acl');
@@ -410,8 +410,8 @@ class ArosController extends AclAppController {
 		$this->_return_to_referer();
 	}
 
-	function admin_grant_all_controllers($role_id) {
-		$role = & $this->{Configure :: read('acl.aro.role.model')};
+	function grant_all_controllers($role_id) {
+		$role = & $this->{Configure::read('Acl.aro.role.model')};
 		$role->id = $role_id;
 
 		/*
@@ -420,7 +420,7 @@ class ArosController extends AclAppController {
 		$node = $this->Acl->Aro->node($role);
 		if (empty($node)) {
 			$asked_role = $role->read(null, $role_id);
-			$this->Session->setFlash(sprintf(__d('acl', "The role '%s' does not exist in the ARO table"), $asked_role['Role'][Configure :: read('acl.aro.role.display_field')]), 'flash_error', null, 'plugin_acl');
+			$this->Session->setFlash(sprintf(__d('acl', "The role '%s' does not exist in the ARO table"), $asked_role['Role'][Configure::read('Acl.aro.role.display_field')]), 'flash_error', null, 'plugin_acl');
 		} else {
 			//Allow to everything
 			$this->Acl->allow($role, 'controllers');
@@ -429,8 +429,8 @@ class ArosController extends AclAppController {
 		$this->_return_to_referer();
 	}
 
-	function admin_deny_all_controllers($role_id) {
-		$role = & $this->{Configure :: read('acl.aro.role.model')};
+	function deny_all_controllers($role_id) {
+		$role = & $this->{Configure::read('Acl.aro.role.model')};
 		$role->id = $role_id;
 
 		/*
@@ -439,7 +439,7 @@ class ArosController extends AclAppController {
 		$node = $this->Acl->Aro->node($role);
 		if (empty($node)) {
 			$asked_role = $role->read(null, $role_id);
-			$this->Session->setFlash(sprintf(__d('acl', "The role '%s' does not exist in the ARO table"), $asked_role['Role'][Configure :: read('acl.aro.role.display_field')]), 'flash_error', null, 'plugin_acl');
+			$this->Session->setFlash(sprintf(__d('acl', "The role '%s' does not exist in the ARO table"), $asked_role['Role'][Configure::read('Acl.aro.role.display_field')]), 'flash_error', null, 'plugin_acl');
 		} else {
 			//Deny everything
 			$this->Acl->deny($role, 'controllers');
@@ -448,8 +448,8 @@ class ArosController extends AclAppController {
 		$this->_return_to_referer();
 	}
 
-	function admin_get_role_controller_permission($role_id) {
-		$role = & $this->{Configure :: read('acl.aro.role.model')};
+	function get_role_controller_permission($role_id) {
+		$role = & $this->{Configure::read('Acl.aro.role.model')};
 
 		$role_data = $role->read(null, $role_id);
 
@@ -488,8 +488,8 @@ class ArosController extends AclAppController {
 		}
 	}
 
-	function admin_grant_role_permission($role_id) {
-		$role = & $this->{Configure :: read('acl.aro.role.model')};
+	function grant_role_permission($role_id) {
+		$role = & $this->{Configure::read('Acl.aro.role.model')};
 
 		$role->id = $role_id;
 
@@ -512,14 +512,14 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_role_granted');
+			$this->render('role_granted');
 		} else {
 			$this->_return_to_referer();
 		}
 	}
 
-	function admin_deny_role_permission($role_id) {
-		$role = & $this->{Configure :: read('acl.aro.role.model')};
+	function deny_role_permission($role_id) {
+		$role = & $this->{Configure::read('Acl.aro.role.model')};
 
 		$role->id = $role_id;
 
@@ -538,14 +538,14 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_role_denied');
+			$this->render('role_denied');
 		} else {
 			$this->_return_to_referer();
 		}
 	}
 
-	function admin_get_user_controller_permission($user_id) {
-		$user = & $this->{Configure :: read('acl.aro.user.model')};
+	function get_user_controller_permission($user_id) {
+		$user = & $this->{Configure::read('Acl.aro.user.model')};
 
 		$user_data = $user->read(null, $user_id);
 
@@ -584,8 +584,8 @@ class ArosController extends AclAppController {
 		}
 	}
 
-	function admin_grant_user_permission($user_id) {
-		$user = & $this->{Configure :: read('acl.aro.user.model')};
+	function grant_user_permission($user_id) {
+		$user = & $this->{Configure::read('Acl.aro.user.model')};
 
 		$user->id = $user_id;
 
@@ -614,14 +614,14 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_user_granted');
+			$this->render('user_granted');
 		} else {
 			$this->_return_to_referer();
 		}
 	}
 
-	function admin_deny_user_permission($user_id) {
-		$user = & $this->{Configure :: read('acl.aro.user.model')};
+	function deny_user_permission($user_id) {
+		$user = & $this->{Configure::read('Acl.aro.user.model')};
 
 		$user->id = $user_id;
 
@@ -650,7 +650,7 @@ class ArosController extends AclAppController {
 		$this->_set_aco_variables();
 
 		if ($this->request->is('ajax')) {
-			$this->render('ajax_user_denied');
+			$this->render('user_denied');
 		} else {
 			$this->_return_to_referer();
 		}

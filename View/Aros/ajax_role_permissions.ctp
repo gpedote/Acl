@@ -12,7 +12,7 @@ echo $this->element('Aros/links');
 <div>
 
 	<?php
-	echo $this->Html->link('<i class="fa fa-trash-o"></i> ' . __d('acl', 'Clear permissions table'), '/admin/acl/aros/empty_permissions', array('confirm' => __d('acl', 'Are you sure you want to delete all roles and users permissions ?'), 'escape' => false, 'class' => 'btn btn-danger'));
+	echo $this->Html->link('<i class="fa fa-trash-o"></i> ' . __d('acl', 'Clear permissions table'), '/acl/aros/empty_permissions', array('confirm' => __d('acl', 'Are you sure you want to delete all roles and users permissions ?'), 'escape' => false, 'class' => 'btn btn-danger'));
 	?>
 
 
@@ -35,8 +35,8 @@ echo $this->element('Aros/links');
 //    $color = ($i % 2 == 0) ? 'color1' : 'color2';
 		echo '<tr>';
 		echo '  <td>' . $role[$role_model_name][$role_display_field] . '</td>';
-		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-check"></i>', '/admin/acl/aros/grant_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
-		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-times"></i>', '/admin/acl/aros/deny_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
+		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-check"></i>', '/acl/aros/grant_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
+		echo '  <td class="text-center">' . $this->Html->link('<i class="fa fa-times"></i>', '/acl/aros/deny_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'class' => 'btn btn-link', 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?"), $role[$role_model_name][$role_display_field]))) . '</td>';
 		echo '<tr>';
 
 //    $i++;
